@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: adrian-md
+    runtime: node
+    plan: free
+    buildCommand: npm install --no-audit --no-fund
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
+      - key: OWNER_NUMBER        # ton numéro, ex: 50937000000 (sans +)
+        sync: false
+      - key: PHONE_NUMBER        # numéro à jumeler (souvent le même que OWNER_NUMBER)
+        sync: false
+      - key: SESSION_ID          # laisse vide au 1er déploiement, remplis-le ensuite
+        sync: false
+      - key: BOT_NAME
+        value: ADRIAN MD
